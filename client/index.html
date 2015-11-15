@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="friends_app">
+<head>
+    <title>Full Mean</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body ng-controller="friendsController">
+    <h1>Friends</h1>
+    <input type="text" ng-model="filter_name" placeholder="filter">
+    <p ng-bind="filter_name"></p>
+    <ul>
+        <li ng-repeat="friend in friends | filter : filter_name">
+          <span ng-bind="friend.name"></span>, <span  ng-bind="friend.age"></span>
+          <input id="red" type="submit" value="Delete" ng-click="removeFriend(friend.name)">
+        </li>
+    </ul>
+    <h1>Add a Friend</h1>
+    <p ng-bind='error'></p>
+    <form>
+        <input type="text" ng-model="name" placeholder="name">
+        <input type="text" ng-model="age" placeholder="age">
+        <input type="submit" ng-click="addFriend()">
+    </form>
+</body>
+</html>
